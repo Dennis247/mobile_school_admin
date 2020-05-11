@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:mobile_school_admin/model/teacher.dart';
+import 'package:mobile_school_admin/model/topic.dart';
 import 'package:mobile_school_admin/ui/widgets/appScafold.dart';
 import 'package:mobile_school_admin/utils/AppStyles.dart';
 
-import 'teachersSubject.dart';
+import 'teachersNote.dart';
 
-class TeacherDashBoard extends StatelessWidget {
-  final Teacher teacher;
-  const TeacherDashBoard({Key key, this.teacher}) : super(key: key);
-
+class TeacherTopicDashBoard extends StatelessWidget {
+  final Topic topic;
+  const TeacherTopicDashBoard({Key key, this.topic}) : super(key: key);
   _buildStudyRow(BuildContext context, Size sz, IconData icon, Color color,
       String title, Function function) {
     return Card(
@@ -53,34 +52,37 @@ class TeacherDashBoard extends StatelessWidget {
   Widget build(BuildContext context) {
     final sz = MediaQuery.of(context).size;
     return AppScaffold(
-      title: "${teacher.firstNae} DashBoard",
+      title: topic.topicName,
       childWidget: Container(
         alignment: Alignment.center,
         height: sz.height,
         width: sz.width,
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(8.0),
             child: GridView.count(
               crossAxisCount: 2,
               mainAxisSpacing: 9.0,
               crossAxisSpacing: 10.0,
               childAspectRatio: 1,
               children: <Widget>[
-                _buildStudyRow(
-                    context, sz, FontAwesomeIcons.book, Colors.red, "Subjects",
-                    () {
+                _buildStudyRow(context, sz, FontAwesomeIcons.desktop,
+                    Colors.red, "Teachers Note", () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
-                    return TeachersSubject(
-                      teacher: teacher,
-                    );
+                    return TeacherNote(topic: topic);
                   }));
                 }),
-                _buildStudyRow(context, sz, FontAwesomeIcons.chartBar,
-                    Colors.blue, "Activities", (() {})),
-                _buildStudyRow(context, sz, FontAwesomeIcons.addressCard,
-                    Colors.orange, "Profile", (() {}))
+                _buildStudyRow(context, sz, FontAwesomeIcons.chalkboardTeacher,
+                    Colors.green, "Assessment", (() {
+                  // Navigator.of(context)
+                  //     .push(MaterialPageRoute(builder: (context) {
+                  //   return CurrentAssessMentPage(
+                  //     topic: topic,
+                  //     questions: demoQuestions,
+                  //   );
+                  // }));
+                })),
               ],
             ),
           ),

@@ -70,7 +70,7 @@ class _AddTeacherState extends State<AddTeacher> {
                         height: 10,
                       ),
                       _buildInputRow("password", FontAwesomeIcons.user),
-                      new DropdownButtonFormField<ClassRoom>(
+                      DropdownButtonFormField<ClassRoom>(
                         decoration: InputDecoration(
                             labelText: "select class",
                             labelStyle: AppStyle.labelTextStyle,
@@ -85,9 +85,9 @@ class _AddTeacherState extends State<AddTeacher> {
                               ),
                             )),
                         items: allClassRooms.map((ClassRoom value) {
-                          return new DropdownMenuItem<ClassRoom>(
+                          return DropdownMenuItem<ClassRoom>(
                             value: value,
-                            child: new Text(
+                            child: Text(
                               value.name,
                               style: AppStyle.normalTexttSTyle,
                             ),

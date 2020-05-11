@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mobile_school_admin/ui/pages/notifications/notifications.dart';
 import 'package:mobile_school_admin/ui/pages/school/updateSchoolProfile.dart';
 import 'package:mobile_school_admin/ui/pages/teachers/teachersPage.dart';
+import 'package:mobile_school_admin/ui/widgets/appDrawer.dart';
 import 'package:mobile_school_admin/ui/widgets/appScafold.dart';
 import 'package:mobile_school_admin/utils/AppStyles.dart';
 
@@ -55,6 +56,7 @@ class HomePage extends StatelessWidget {
     final sz = MediaQuery.of(context).size;
     return AppScaffold(
       title: "Home Page",
+      appDrawer: AppDrawer(),
       childWidget: Container(
         alignment: Alignment.center,
         height: sz.height,
@@ -68,7 +70,7 @@ class HomePage extends StatelessWidget {
               crossAxisSpacing: 10.0,
               childAspectRatio: 1,
               children: <Widget>[
-                _buildStudyRow(context, sz, FontAwesomeIcons.running,
+                _buildStudyRow(context, sz, FontAwesomeIcons.restroom,
                     Colors.red, "Students", () {
                   Navigator.of(context).pushNamed(ClassRoomPage.routeName);
                 }),

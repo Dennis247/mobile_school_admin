@@ -6,14 +6,21 @@ class AppScaffold extends StatelessWidget {
   final Widget childWidget;
   final List<Widget> actions;
   final FloatingActionButton fab;
+  final Widget appDrawer;
 
   const AppScaffold(
-      {Key key, this.title, this.childWidget, this.actions, this.fab})
+      {Key key,
+      this.title,
+      this.childWidget,
+      this.actions,
+      this.fab,
+      this.appDrawer})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        drawer: appDrawer,
         appBar: AppBar(
           actions: actions,
           title: Text(
@@ -21,11 +28,15 @@ class AppScaffold extends StatelessWidget {
             style: AppStyle.headerTextStyle,
           ),
           centerTitle: true,
-          leading: IconButton(
-              icon: Icon(Icons.arrow_back_ios),
-              onPressed: () {
-                Navigator.of(context).pop();
-              }),
+          // automaticallyImplyLeading: true,
+
+          leading: appDrawer != null
+              ? null
+              : IconButton(
+                  icon: Icon(Icons.arrow_back_ios),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  }),
         ),
         body: Container(
             width: MediaQuery.of(context).size.width,

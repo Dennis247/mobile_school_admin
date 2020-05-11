@@ -75,6 +75,22 @@ class AppStyle {
         fontWeight: FontWeight.w600),
   );
 
+  static final mediumWhiteTexttSTyle = GoogleFonts.poppins(
+    textStyle: TextStyle(
+        color: Colors.white,
+        fontFamily: 'Poppins',
+        fontSize: 13,
+        fontWeight: FontWeight.w400),
+  );
+
+  static final normalhiteTexttSTyle = GoogleFonts.poppins(
+    textStyle: TextStyle(
+        color: Colors.white,
+        fontFamily: 'Poppins',
+        fontSize: 12,
+        fontWeight: FontWeight.w300),
+  );
+
   static final headerTextStyle = GoogleFonts.poppins(
     textStyle: TextStyle(
         color: Constants.primaryColorLight,
